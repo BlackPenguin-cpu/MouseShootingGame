@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum PlayerState
+{
+    Idle,
+    CantMove
+}
 
 public class Player : MonoBehaviour
 {
     public static Player Instance;
 
+    public PlayerState state;
     public float invincible;
     [SerializeField] private float invincibleDelay;
 
@@ -32,7 +38,7 @@ public class Player : MonoBehaviour
     {
         if (invincible <= 0)
         {
-
+            Debug.Log("ÀÌµûÀÌ");
             invincible = invincibleDelay;
         }
     }

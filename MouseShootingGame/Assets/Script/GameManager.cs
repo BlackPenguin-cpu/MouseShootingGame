@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     }
     void OnMouseMove()
     {
+        if (Player.Instance.state == PlayerState.CantMove) return;
         Vector3 vec = new Vector3(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), 0) * Speed;
         PlayerMoveLimit(ref vec);
 
@@ -49,13 +50,13 @@ public class GameManager : MonoBehaviour
     }
     void PlayerMoveLimit(ref Vector3 pos)
     {
-        if (PlayerObj.transform.position.x >= 9 && pos.x > 0
-   || PlayerObj.transform.position.x <= -9 && pos.x < 0)
+        if (PlayerObj.transform.position.x >= 8f && pos.x > 0
+            || PlayerObj.transform.position.x <= -8f && pos.x < 0)
         {
             pos.x = 0;
         }
-        else if (PlayerObj.transform.position.y >= 5 && pos.y > 0
-            || PlayerObj.transform.position.y <= -5 && pos.y < 0)
+        if (PlayerObj.transform.position.y >= 4f && pos.y > 0
+            || PlayerObj.transform.position.y <= -4f && pos.y < 0)
         {
             pos.y = 0;
         }
