@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class GasterBlaster : MonoBehaviour
 {
-    void Start()
+    [SerializeField] GameObject blast;
+    public void Shoot()
     {
-        StartCoroutine(ReadyToShot());
+        blast.SetActive(true);
+        StartCoroutine(SelfDestroy());
     }
-    IEnumerator ReadyToShot()
+    IEnumerator SelfDestroy()
     {
         yield return new WaitForSeconds(1);
-
-
-
+        Destroy(gameObject);
     }
 }

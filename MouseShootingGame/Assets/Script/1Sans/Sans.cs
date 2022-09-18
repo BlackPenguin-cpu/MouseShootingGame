@@ -7,6 +7,7 @@ public class Sans : MonoBehaviour
     [SerializeField] private GameObject wavePatternObj;
     [SerializeField] private GameObject warningObj;
     [SerializeField] private GameObject boneWall;
+    [SerializeField] private GameObject gasterBlasterPattern;
     private Player player;
     void Start()
     {
@@ -44,6 +45,18 @@ public class Sans : MonoBehaviour
         {
             wavePatternObj.transform.Translate(Time.deltaTime * 12, 0, 0);
             yield return null;
+        }
+
+
+        List<Transform> gasterBlasters = new List<Transform>();
+        for (int i = 0; i < gasterBlasterPattern.transform.childCount; i++)
+        {
+            gasterBlasters.Add(gasterBlasterPattern.transform.GetChild(i));
+        }
+        foreach (Transform gaster in gasterBlasters)
+        {
+            gaster.gameObject.SetActive(true);
+            yield return new WaitForSeconds(1.3f);
         }
     }
 }
