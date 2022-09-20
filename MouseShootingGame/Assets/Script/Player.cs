@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
             OnHit();
         }
     }
-    void OnHit()
+    public void OnHit()
     {
         if (invincible <= 0)
         {

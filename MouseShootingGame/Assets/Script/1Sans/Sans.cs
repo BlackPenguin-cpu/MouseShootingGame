@@ -58,5 +58,7 @@ public class Sans : MonoBehaviour
             gaster.gameObject.SetActive(true);
             yield return new WaitForSeconds(1.3f);
         }
+
+        Destroy(gameObject);
     }
 }
