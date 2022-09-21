@@ -30,5 +30,18 @@ public class Issac : MonoBehaviour
 
 
 
+
+        for (int i = 0; i < 배열.길이; i++)
+        {
+            for (int j = 0; j < 배열.길이; i++)
+            {
+                if (배열[j] < 배열[j + 1])
+                {
+                    swap(배열[j], 배열[j + 1]);
+                }
+            }
+        }
+
+
     }
 }
