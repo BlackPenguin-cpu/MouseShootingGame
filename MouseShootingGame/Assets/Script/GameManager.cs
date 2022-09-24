@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerObj = Instantiate(PlayerObj, PlayerObj.transform.position, Quaternion.identity);
         PlayerObj.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.3f);
+        PlayerObj.GetComponent<Player>().invincible = 50000;
     }
     void OnMouseMove()
     {

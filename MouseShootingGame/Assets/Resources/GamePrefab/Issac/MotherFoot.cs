@@ -7,7 +7,7 @@ public class MotherFoot : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     void Start()
     {
-        BoxCollider2D boxCollider2D = GetComponent<BoxCollider2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         StartCoroutine(Stomp());
     }
     IEnumerator Stomp()
@@ -17,7 +17,7 @@ public class MotherFoot : MonoBehaviour
         Vector3 targetVec = transform.position - new Vector3(0, 10, 0);
         while (transform.position != targetVec)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetVec, Time.deltaTime * 10);
+            transform.position = Vector2.MoveTowards(transform.position, targetVec, Time.deltaTime * 30);
             yield return null;
         }
 
@@ -29,7 +29,15 @@ public class MotherFoot : MonoBehaviour
             }
         }
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
+
+        targetVec = transform.position + new Vector3(0, 10, 0);
+        while (transform.position != targetVec)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetVec, Time.deltaTime * 30);
+            yield return null;
+        }
+
         Destroy(gameObject);
     }
 }

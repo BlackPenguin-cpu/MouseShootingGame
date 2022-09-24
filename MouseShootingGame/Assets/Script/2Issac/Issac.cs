@@ -6,11 +6,10 @@ using UnityEngine;
 public class Issac : MonoBehaviour
 {
     public GameObject MotherFoot;
-    private DangerZone dangerZone;
+    public DangerZone dangerZone;
     private Animator IssacAnimator;
     private void Start()
     {
-        dangerZone = Resources.Load<DangerZone>("DangerZone");
         StartCoroutine(PatternStart());
     }
     IEnumerator PatternStart()
@@ -21,11 +20,11 @@ public class Issac : MonoBehaviour
         {
             DangerZone zone = Instantiate(dangerZone, Player.Instance.transform.position, Quaternion.identity);
             zone.duration = 1;
-            zone.OnDestroyAction += () => Instantiate(MotherFoot, transform.position, Quaternion.identity);
+            zone.OnDestroyAction += () => Instantiate(MotherFoot, zone.transform.position, Quaternion.identity);
             yield return new WaitForSeconds(0.3f);
         }
 
-        IssacAnimator.Play("IssacStart");
+        //IssacAnimator.Play("IssacStart");
         yield return new WaitForSeconds(0.5f);
 
 

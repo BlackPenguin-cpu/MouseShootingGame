@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     }
     public void OnHit()
     {
-        if (invincible <= 0)
+        if (invincible <= 0 && gameObject.tag == "Player")
         {
             Debug.Log("ÀÌµûÀÌ");
             invincible = invincibleDelay;
