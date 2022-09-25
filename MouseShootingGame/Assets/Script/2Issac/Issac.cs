@@ -7,10 +7,21 @@ public class Issac : MonoBehaviour
 {
     public GameObject MotherFoot;
     public DangerZone dangerZone;
-    private Animator IssacAnimator;
     private void Start()
     {
-        StartCoroutine(PatternStart());
+        StartCoroutine(MomFootRush());
+    }
+
+    IEnumerator MomFootRush()
+    {
+        yield return new WaitForSeconds(1);
+        while (true)
+        {
+            DangerZone zone = Instantiate(dangerZone, Player.Instance.transform.position, Quaternion.identity);
+            zone.duration = 1f;
+            zone.OnDestroyAction += () => Instantiate(MotherFoot, zone.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(Random.Range(3, 10));
+        }
     }
     IEnumerator PatternStart()
     {

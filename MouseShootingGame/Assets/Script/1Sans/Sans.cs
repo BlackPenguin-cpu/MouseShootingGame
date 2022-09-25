@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Sans : MonoBehaviour
 {
@@ -58,6 +59,9 @@ public class Sans : MonoBehaviour
             gaster.gameObject.SetActive(true);
             yield return new WaitForSeconds(1.3f);
         }
+
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("End");
 
         Destroy(gameObject);
     }

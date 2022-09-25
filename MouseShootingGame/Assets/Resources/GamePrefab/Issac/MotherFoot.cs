@@ -12,12 +12,24 @@ public class MotherFoot : MonoBehaviour
     }
     IEnumerator Stomp()
     {
+        switch (Random.Range(1, 4))
+        {
+            case 1:
+                SoundManager.Instance.PlaySound("mom1");
+                break;
+            case 2:
+                SoundManager.Instance.PlaySound("mom2");
+                break;
+            case 3:
+                SoundManager.Instance.PlaySound("mom3");
+                break;
+        }
         transform.Translate(0, 10, 0);
 
         Vector3 targetVec = transform.position - new Vector3(0, 10, 0);
         while (transform.position != targetVec)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetVec, Time.deltaTime * 30);
+            transform.position = Vector2.MoveTowards(transform.position, targetVec, Time.deltaTime * 50);
             yield return null;
         }
 

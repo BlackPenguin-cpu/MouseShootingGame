@@ -26,10 +26,12 @@ public class GayPinBalls : MonoBehaviour
     private void ThrowGayBall()
     {
         if (gayNum > 5) return;
-        GameObject obj = Instantiate(gayBall, transform.position, Quaternion.identity);
 
+        SoundManager.Instance.PlaySound("gay" + (gayNum + 1), SoundType.SE, 2f);
+        GameObject obj = Instantiate(gayBall, transform.position, Quaternion.identity);
+        obj.transform.parent = gameObject.transform;
         obj.GetComponent<SpriteRenderer>().sprite = gaySprites[gayNum];
-        obj.GetComponent<Rigidbody2D>().AddForce(Random.insideUnitCircle * Random.Range(10, 30), ForceMode2D.Impulse);
+        obj.GetComponent<Rigidbody2D>().AddForce(Random.insideUnitCircle * Random.Range(15, 35), ForceMode2D.Impulse);
         gayNum++;
     }
 }
