@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public bool isStart;
     public float Speed
     {
-        get { return MoveSpeedGauge.value * 2; }
+        get { return MoveSpeedGauge.value * 2 + 0.05f; }
     }
     public bool isShading;
 
